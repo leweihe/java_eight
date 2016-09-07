@@ -1,6 +1,7 @@
 package learn.example.one.service;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -10,5 +11,9 @@ public class AppleService {
 
 	public List<Apple> filterByAction(List<Apple> orgApples, Predicate<Apple> predicate) {
 		return orgApples.stream().filter(predicate).collect(Collectors.toList());
+	}
+
+	public void iteratorAllApples(List<Apple> apples, Consumer<Apple> consumer) {
+		apples.stream().forEach(consumer);
 	}
 }
