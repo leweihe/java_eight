@@ -1,4 +1,4 @@
-package fun.learn.object;
+package learn.example.object;
 
 public class Apple {
 
