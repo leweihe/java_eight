@@ -2,6 +2,10 @@ package learn.example.one.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import learn.example.one.object.Apple;
 import learn.example.one.service.AppleService;
@@ -14,6 +18,10 @@ public class AppleUtil {
 	private static AppleService appleService = new AppleService();
 
 	// Predicate examples
+	public static List<Apple> basicPredicateCall(List<Apple> allApples, Predicate<Apple> predicate) {
+		return allApples.stream().filter(predicate).collect(Collectors.toList());
+	}
+
 	public static List<Apple> filterRedApples(List<Apple> allApples) {
 		return appleService.filterByAction(allApples, (Apple a) -> COLOR_RED.equals(a.getColor()));
 	}
@@ -32,8 +40,13 @@ public class AppleUtil {
 	}
 
 	// Consumer examples
+	public static void basicConsumerCall(List<Apple> allApples, Consumer<Apple> consumer) {
+		allApples.stream().forEach(consumer);
+	}
+
 	public static void printAppleInSimpleWay(List<Apple> allApples) {
-		appleService.iteratorAllApples(allApples, (Apple a) -> System.out.print(a.getWeight() + ", " + a.getColor() + ". "));
+		appleService.iteratorAllApples(allApples,
+				(Apple a) -> System.out.print(a.getWeight() + ", " + a.getColor() + ". "));
 	}
 
 	public static void printAppleInComplexWay(List<Apple> allApples) {
@@ -41,6 +54,19 @@ public class AppleUtil {
 			System.out.println("weight, " + a.getWeight());
 			System.out.println("color, " + a.getColor());
 		});
+	}
+
+	// Function example
+	public static List<Integer> basicFunctionCall(List<Apple> allApples, Function<Apple, Integer> function) {
+		return allApples.stream().map(function).collect(Collectors.toList());
+	}
+
+	public static List<Integer> mapAppleToWeight(List<Apple> allApples) {
+		return allApples.stream().map((Apple a) -> a.getWeight()).collect(Collectors.toList());
+	}
+
+	public static List<String> mapAppleToColor(List<Apple> allApples) {
+		return allApples.stream().map((Apple a) -> a.getColor()).collect(Collectors.toList());
 	}
 
 	public static List<Apple> getAllApples() {

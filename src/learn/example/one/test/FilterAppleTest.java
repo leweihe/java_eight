@@ -10,5 +10,6 @@ public class FilterAppleTest {
 	public void filterAppleTest() {
 		AppleUtil.printAppleInComplexWay(AppleUtil.filterHeavyApples(AppleUtil.getAllApples()));
 		AppleUtil.printAppleInSimpleWay(AppleUtil.filterHeavyApples(AppleUtil.getAllApples()));
+		AppleUtil.mapAppleToColor(AppleUtil.getAllApples()).stream().forEach(System.out::println);
 	}
 }
