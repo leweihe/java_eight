@@ -1,10 +1,10 @@
-package fun.learn.service;
+package learn.example.one.service;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import fun.learn.object.Apple;
+import learn.example.one.object.Apple;
 
 public class AppleService {
 
